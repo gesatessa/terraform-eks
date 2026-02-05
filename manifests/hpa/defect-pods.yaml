@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: crash-pod
+spec:
+  containers:
+  - name: app
+    image: busybox
+    command: ["sh", "-c", "exit 1"]
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bad-image-pod
+spec:
+  containers:
+  - name: app
+    image: nginx:this-tag-does-not-exist
+---
